@@ -4,7 +4,8 @@ def loginWithAnon(host):
     try:
         ftp = ftplib.FTP(host)
         ftp.login('anonymous')
-        print(f'\n-----Success-----\n\n{str(host)} logged in via FTP anonymously.\n\n')
+        print(f'\n-----Success-----\n\n{str(host)} logged in via FTP anonymously.\n\nList of files within:\n\n')
+        print( str(ftp.retrlines('LIST')) + "\n\n")
         ftp.quit()
         return True
     except Exception:
@@ -16,3 +17,4 @@ if __name__ == '__main__':
     hostname = input('Enter IP of host to scan: ')
     print(f"\nIP to be scanned is {hostname}\n")
     loginWithAnon(hostname)
+    print("\n\nThank you for using me.\nGoodbye.")
